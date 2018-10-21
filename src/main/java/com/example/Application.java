@@ -1,32 +1,29 @@
 package com.example;
 
+import com.example.services.PageManager;
 import com.example.utils.Logger;
 
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Application {
 
     public static void main (String[] args){
+        start();
+    }
+
+    private static void start() {
+        ExecutorService executorService = null;
         try{
-            printLogo();
-            Executors.newSingleThreadExecutor()
-                     .submit(new Menu())
-                     .get();
-            goodBye();
+            executorService = Executors.newSingleThreadExecutor();
+            executorService.submit(new PageManager())
+                           .get();
         }catch (Throwable e){
             Logger.error("Sorry, Application exited unexpectedly :(");
+            executorService.shutdownNow();
+            e.printStackTrace();
         }
-
-    }
-
-    private static void goodBye() {
-        System.out.println("Good bye! See you soon :)");
-
     }
 
 
-
-    private static void printLogo() {
-        System.out.println("Welcome to my game!");
-    }
 }

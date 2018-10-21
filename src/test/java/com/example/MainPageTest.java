@@ -2,12 +2,11 @@ package com.example;
 
 import org.junit.Test;
 
-public class MenuTest {
+public class MainPageTest {
 
 
     @Test
     public void testMenu(){
-        Menu menu = new Menu();
-        menu.exit();
+
     }
 }
