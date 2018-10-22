@@ -6,6 +6,9 @@ import com.example.games.GuessNumberGame;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+ * To handle requests from @GuessNumberGamePage.
+ */
 public class GuessNumberGameController implements Controller {
 
     public final static String CMD_START_NEW = "1";

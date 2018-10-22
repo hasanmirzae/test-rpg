@@ -3,6 +3,10 @@ package com.example.pages;
 import java.util.LinkedList;
 import java.util.List;
 
+
+/*
+ * A convenient class to show the menus.
+ */
 public class MenuView {
 
     private List<MenuItem> items = new LinkedList<>();

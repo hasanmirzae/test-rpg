@@ -6,6 +6,9 @@ import com.example.pages.GamesListPage;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+* To handle requests from @FrontPage.
+*/
 public class FrontPageController implements Controller {
 
     public final static String CMD_LIST_GAME = "1";

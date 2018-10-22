@@ -5,6 +5,9 @@ import com.example.pages.Page;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+ * To manage pages life cycle.
+ */
 public class PageManager {
 
     private Map<String,Page> pages = new HashMap<>();
