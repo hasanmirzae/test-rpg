@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
+/*
+ * To handle requests from @GamesListPage.
+ */
 public class GamesListController implements Controller {
 
     public final static String CMD_GUESS_NUMBER_GAME = "1";

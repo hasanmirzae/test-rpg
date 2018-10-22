@@ -9,6 +9,10 @@ import com.example.utils.IOUtil;
 
 import java.io.IOException;
 
+/*
+* A long running thread to accept user's input and pass it to the current @Page.
+* In terms of MVC pattern, pages are the Views.
+*/
 public class AppGui implements Runnable{
 
     private Page currentPage;

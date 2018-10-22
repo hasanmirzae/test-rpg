@@ -6,6 +6,9 @@ import com.example.utils.IOUtil;
 import java.io.FileNotFoundException;
 import java.util.Random;
 
+/*
+ * A simple game that expects user to guess a number which randomly was generated.
+ */
 public class GuessNumberGame implements Game{
 
     private int guess = new Random().nextInt(10);

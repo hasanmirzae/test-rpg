@@ -2,6 +2,9 @@ package com.example.models;
 
 import java.io.Serializable;
 
+/*
+ * Model to store and load the game status.
+ */
 public class GuessNumber implements Serializable {
     private int tries;
     private int answer;
