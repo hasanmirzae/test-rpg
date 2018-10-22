@@ -1,24 +1,26 @@
 package com.example.services;
 
+import com.example.games.Game;
 import com.example.utils.IOUtil;
 
 import java.util.Random;
 
-public class MyFirstGameService {
+public class GuessNumberGameService {
 
     int guess = new Random().nextInt(10);
 
     public void startNewGame(){
         System.out.print("Enter new username: ");
         String username = IOUtil.readString();
-        System.out.println("Welcome "+username+" to MyFirstGame");
+        System.out.println("Welcome "+username+" to GuessNumberGame");
         playGame();
     }
+
 
     public void resume(){
         System.out.print("Enter username: ");
         String username = IOUtil.readString();
-        System.out.println("Welcome back "+username+" to MyFirstGame");
+        System.out.println("Welcome back "+username+" to GuessNumberGame");
         playGame();
     }
 

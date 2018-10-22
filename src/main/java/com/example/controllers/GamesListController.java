@@ -1,6 +1,6 @@
 package com.example.controllers;
 
-import com.example.games.MyFirstGame;
+import com.example.games.GuessNumberGame;
 import com.example.services.AppGui;
 import com.example.services.GamesListService;
 
@@ -21,7 +21,7 @@ public class GamesListController implements Controller {
     {
         //Init handlers
         handlers = new HashMap<>(1);
-        handlers.put(CMD_MY_FIRST_GAME,cmd -> appGui.openPage(MyFirstGame.KEY));
+        handlers.put(CMD_MY_FIRST_GAME,cmd -> appGui.openPage(GuessNumberGame.KEY));
         handlers.put(CMD_EXIT,cmd -> appGui.goHome());
     }
 
