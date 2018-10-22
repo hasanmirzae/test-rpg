@@ -17,7 +17,7 @@ public class FrontPage  extends AbstractPage{
     @Override public void showMenu() {
         System.out.println(new MenuView.Builder()
                 .addItem(FrontPageController.CMD_LIST_GAME,"List games")
-                .addItem(FrontPageController.CMD_EXIT,"Exit")
+                .addItem(FrontPageController.CMD_EXIT,"Exit application")
                 .withTitle("Home")
                 .build()
         );

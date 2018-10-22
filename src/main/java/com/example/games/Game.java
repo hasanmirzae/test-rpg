@@ -7,4 +7,6 @@ public interface Game{
     void save();
 
     void load();
+
+    String uuid();
 }

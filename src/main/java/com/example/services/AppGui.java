@@ -6,8 +6,6 @@ import com.example.pages.MenuCmds;
 import com.example.pages.Page;
 import com.example.utils.IOUtil;
 
-import java.io.IOException;
-
 public class AppGui implements Runnable{
 
     private Page currentPage;
@@ -44,8 +42,7 @@ public class AppGui implements Runnable{
 
         while (menuCmd != MenuCmds.EXIT){
             currentPage.showMenu();
-            System.out.print("Enter menu item: ");
-            currentPage.accept(IOUtil.readString());
+            currentPage.accept(IOUtil.prompt("Enter menu item"));
         }
         goodBye();
     }

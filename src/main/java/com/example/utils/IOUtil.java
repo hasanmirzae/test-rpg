@@ -21,6 +21,11 @@ public class IOUtil {
         return scanner.next();
     }
 
+    public static String prompt(String msg){
+        System.out.print(msg+": ");
+        return readString();
+    }
+
     public static boolean writeObjectToFile(String filename, Object serObj) {
         try (
                 FileOutputStream fileOut = new FileOutputStream(filename);
