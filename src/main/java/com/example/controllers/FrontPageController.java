@@ -7,7 +7,6 @@ import com.example.services.GamesListService;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Consumer;
 
 public class FrontPageController implements Controller {
 
@@ -16,22 +15,7 @@ public class FrontPageController implements Controller {
     private AppGui appGui;
     private FrontPageService frontPageService;
 
-    private Map<String, Consumer<String>> handlers;
-
-
-    {
-        //Init handlers
-        handlers = new HashMap<>(1);
-        handlers.put(CMD_LIST_GAME,cmd -> {
-            if (!appGui.initializedPage(GamesListPage.KEY)){
-                appGui.initPage(GamesListPage.KEY, new GamesListPage(new GamesListController(appGui,new GamesListService()),appGui));
-            }
-            appGui.openPage(GamesListPage.KEY);
-        });
-        handlers.put(CMD_EXIT,cmd -> appGui.exit());
-    }
-
-
+    private Map<String, Runnable> handlers;
 
     private FrontPageController(){}
 
@@ -40,6 +24,21 @@ public class FrontPageController implements Controller {
         this.frontPageService = frontPageService;
     }
 
+    {
+        //Init handlers
+        handlers = new HashMap<>(1);
+        handlers.put(CMD_LIST_GAME,() -> {
+            if (!appGui.initializedPage(GamesListPage.KEY)){
+                appGui.initPage(GamesListPage.KEY, new GamesListPage(new GamesListController(appGui,new GamesListService()),appGui));
+            }
+            appGui.openPage(GamesListPage.KEY);
+        });
+        handlers.put(CMD_EXIT,appGui::exit);
+    }
+
+    protected void setHandlers(Map<String, Runnable> handlers){
+        this.handlers = handlers;
+    }
 
 
     @Override public void handleRequest(String input) {
