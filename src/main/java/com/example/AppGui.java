@@ -1,9 +1,10 @@
-package com.example.services;
+package com.example;
 
 import com.example.controllers.FrontPageController;
 import com.example.pages.FrontPage;
 import com.example.pages.MenuCmds;
 import com.example.pages.Page;
+import com.example.services.PageManager;
 import com.example.utils.IOUtil;
 
 import java.io.IOException;
@@ -13,28 +14,30 @@ public class AppGui implements Runnable{
     private Page currentPage;
     private Page homePage;
     private MenuCmds menuCmd = MenuCmds.HELP;
-    private PageManager pageManager = new PageManager();
+    private PageManager pageManager;
 
-    {
-        printLogo();
-        homePage = new FrontPage(new FrontPageController(this,new FrontPageService()),this);
-        currentPage = homePage;
+    private AppGui(){ }
+
+    public AppGui(PageManager pageManager){
+        this.pageManager = pageManager;
+        init();
     }
 
-
-
+    private void init(){
+        printLogo();
+        homePage = new FrontPage(new FrontPageController(this),this);
+        currentPage = homePage;
+    }
 
     public Page getCurrentPage() {
         return currentPage;
     }
-
 
     public void openPage(String key){
         if (!pageManager.has(key)){
             System.out.println("Page not found! "+key);
         }else{
             currentPage = pageManager.getPage(key);
-
         }
     }
 

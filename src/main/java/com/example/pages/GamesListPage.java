@@ -3,7 +3,7 @@ package com.example.pages;
 import com.example.controllers.Controller;
 import com.example.controllers.GamesListController;
 import com.example.controllers.GuessNumberGameController;
-import com.example.services.AppGui;
+import com.example.AppGui;
 import com.example.games.GuessNumberGame;
 
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class GamesListPage extends AbstractPage{
 
     @Override public void showMenu() {
         System.out.println(new MenuView.Builder()
-                .addItem(GamesListController.CMD_MY_FIRST_GAME,"My first game")
+                .addItem(GamesListController.CMD_GUESS_NUMBER_GAME,"My first game")
                 .addItem(GamesListController.CMD_EXIT,"Exit")
                 .withTitle("All games")
                 .build()

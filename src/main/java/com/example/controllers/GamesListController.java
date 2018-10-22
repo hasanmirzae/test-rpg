@@ -1,8 +1,7 @@
 package com.example.controllers;
 
+import com.example.AppGui;
 import com.example.pages.GuessNumberGamePage;
-import com.example.services.AppGui;
-import com.example.services.GamesListService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,10 +9,9 @@ import java.util.function.Consumer;
 
 public class GamesListController implements Controller {
 
-    public final static String CMD_MY_FIRST_GAME = "1";
+    public final static String CMD_GUESS_NUMBER_GAME = "1";
     public final static String CMD_EXIT = "2";
     private AppGui appGui;
-    private GamesListService gamesListService;
 
     private Map<String, Consumer<String>> handlers;
 
@@ -21,7 +19,7 @@ public class GamesListController implements Controller {
     {
         //Init handlers
         handlers = new HashMap<>(1);
-        handlers.put(CMD_MY_FIRST_GAME,cmd -> appGui.openPage(GuessNumberGamePage.KEY));
+        handlers.put(CMD_GUESS_NUMBER_GAME, cmd -> appGui.openPage(GuessNumberGamePage.KEY));
         handlers.put(CMD_EXIT,cmd -> appGui.goHome());
     }
 
@@ -29,9 +27,8 @@ public class GamesListController implements Controller {
 
     private GamesListController(){}
 
-    public GamesListController(AppGui appGui, GamesListService gamesListService) {
+    public GamesListController(AppGui appGui) {
         this.appGui = appGui;
-        this.gamesListService = gamesListService;
     }
 
 
@@ -39,11 +36,10 @@ public class GamesListController implements Controller {
     @Override public void handleRequest(String input) {
 
         if (!handlers.containsKey(input)){
-            throw new UnsupportedOperationException("Unsupported command "+input);
+            System.out.println("Wrong menu item!");
+        }else {
+            handlers.get(input).accept(input);
         }
-
-        handlers.get(input).accept(input);
-
     }
 
 

@@ -1,9 +1,7 @@
 package com.example.controllers;
 
+import com.example.AppGui;
 import com.example.pages.GamesListPage;
-import com.example.services.AppGui;
-import com.example.services.FrontPageService;
-import com.example.services.GamesListService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,26 +11,19 @@ public class FrontPageController implements Controller {
     public final static String CMD_LIST_GAME = "1";
     public final static String CMD_EXIT = "2";
     private AppGui appGui;
-    private FrontPageService frontPageService;
 
-    private Map<String, Runnable> handlers;
+    private Map<String, Runnable> handlers = new HashMap<>(3);
 
     private FrontPageController(){}
 
-    public FrontPageController(AppGui appGui, FrontPageService frontPageService) {
+    public FrontPageController(AppGui appGui) {
         this.appGui = appGui;
-        this.frontPageService = frontPageService;
+        init();
     }
 
-    {
+    private void init(){
         //Init handlers
-        handlers = new HashMap<>(1);
-        handlers.put(CMD_LIST_GAME,() -> {
-            if (!appGui.initializedPage(GamesListPage.KEY)){
-                appGui.initPage(GamesListPage.KEY, new GamesListPage(new GamesListController(appGui,new GamesListService()),appGui));
-            }
-            appGui.openPage(GamesListPage.KEY);
-        });
+        handlers.put(CMD_LIST_GAME,() -> appGui.openPage(GamesListPage.KEY));
         handlers.put(CMD_EXIT,appGui::exit);
     }
 
@@ -44,9 +35,11 @@ public class FrontPageController implements Controller {
     @Override public void handleRequest(String input) {
 
         if (!handlers.containsKey(input)){
-            throw new UnsupportedOperationException("Unsupported command "+input);
+            System.out.println("Wrong menu number!");
+        }else{
+            handlers.get(input).run();
         }
-        handlers.get(input).accept(input);
+
     }
 
 

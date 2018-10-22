@@ -2,11 +2,11 @@ package com.example.pages;
 
 import com.example.controllers.Controller;
 import com.example.controllers.GuessNumberGameController;
-import com.example.services.AppGui;
+import com.example.AppGui;
 
 public class GuessNumberGamePage extends AbstractPage {
 
-    public static final String KEY = "MY_FIRST_GAME";
+    public static final String KEY = "GUESS_NUMBER_PAGE";
 
     public GuessNumberGamePage(Controller controller, AppGui appGui) {
         super(controller, appGui);

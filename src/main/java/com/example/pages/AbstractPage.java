@@ -1,7 +1,7 @@
 package com.example.pages;
 
 import com.example.controllers.Controller;
-import com.example.services.AppGui;
+import com.example.AppGui;
 
 public abstract class AbstractPage implements Page {
 

@@ -1,6 +1,6 @@
 package com.example.controllers;
 
-import com.example.services.AppGui;
+import com.example.AppGui;
 import com.example.games.GuessNumberGame;
 
 import java.util.HashMap;
@@ -42,8 +42,9 @@ public class GuessNumberGameController implements Controller {
 
         if (!handlers.containsKey(input)){
             System.out.println("Wrong command! Please choose a command from the menu.");
+        }else {
+            handlers.get(input).run();
         }
-        handlers.get(input).run();
 
     }
 
