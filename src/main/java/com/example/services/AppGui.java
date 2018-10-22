@@ -6,6 +6,8 @@ import com.example.pages.MenuCmds;
 import com.example.pages.Page;
 import com.example.utils.IOUtil;
 
+import java.io.IOException;
+
 public class AppGui implements Runnable{
 
     private Page currentPage;
@@ -56,7 +58,11 @@ public class AppGui implements Runnable{
 
 
     private static void printLogo() {
-        System.out.println("Welcome to my game!");
+        try {
+            IOUtil.printTxtTile("logo.txt");
+        } catch (IOException e) {
+            System.out.println("Welcome to RPGs");
+        }
     }
 
     public void exit(){

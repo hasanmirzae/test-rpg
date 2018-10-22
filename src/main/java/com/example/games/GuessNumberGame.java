@@ -41,7 +41,7 @@ public class GuessNumberGame implements Game{
 
     @Override public void load() {
         try{
-            GuessNumber snapshot = (GuessNumber) IOUtil.loadObjectFromFile(username+".rpg");
+            GuessNumber snapshot = (GuessNumber) IOUtil.loadObjectFromFile(getFilename());
             tries = snapshot.getTries();
             guess = snapshot.getAnswer();
             System.out.println("Game loaded successfully for "+username);

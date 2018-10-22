@@ -6,10 +6,13 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class IOUtil {
@@ -47,6 +50,10 @@ public class IOUtil {
         }catch (Throwable e){
             throw new RuntimeException(e);
         }
+    }
+
+    public static void printTxtTile(String filename) throws IOException {
+        System.out.println(new String(Files.readAllBytes(Paths.get(filename))));
     }
 
 }

@@ -39,7 +39,7 @@ public class MenuView {
         sb.append("\n            "+title);
         sb.append("\n**************************************");
         items.forEach(item -> sb.append(String.format("\n%s : %s\n",item.cmd,item.description)));
-        sb.append("**************************************\n");
+        sb.append("--------------------------------------\n");
         return sb.toString();
     }
 
