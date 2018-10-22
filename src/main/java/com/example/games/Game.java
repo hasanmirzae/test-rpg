@@ -1,10 +1,10 @@
 package com.example.games;
 
-public interface Game<T>{
+public interface Game{
 
     void startNewGame();
 
-    void save(T snapshot);
+    void save();
 
-    T load();
+    void load();
 }

@@ -4,6 +4,20 @@ import java.io.Serializable;
 
 public class GuessNumber implements Serializable {
     private int tries;
+    private int answer;
+
+    public GuessNumber(int tries, int answer) {
+        this.tries = tries;
+        this.answer = answer;
+    }
+
+    public int getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(int answer) {
+        this.answer = answer;
+    }
 
     public int getTries() {
         return tries;

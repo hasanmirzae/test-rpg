@@ -3,9 +3,8 @@ package com.example.pages;
 import com.example.controllers.Controller;
 import com.example.controllers.GamesListController;
 import com.example.controllers.GuessNumberGameController;
-import com.example.games.GuessNumberGame;
 import com.example.services.AppGui;
-import com.example.services.GuessNumberGameService;
+import com.example.games.GuessNumberGame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +16,8 @@ public class GamesListPage extends AbstractPage{
 
     {
         games = new ArrayList<>();
-        GuessNumberGame game = new GuessNumberGame(new GuessNumberGameController(appGui,new GuessNumberGameService()),appGui);
-        appGui.initPage(GuessNumberGame.KEY,game);
+        GuessNumberGamePage game = new GuessNumberGamePage(new GuessNumberGameController(appGui,new GuessNumberGame()),appGui);
+        appGui.initPage(GuessNumberGamePage.KEY,game);
         games.add(game);
     }
 
