@@ -3,17 +3,14 @@ package com.example.utils;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class IOUtil {
 
-    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private static Scanner scanner = new Scanner(System.in);
 
-    public static String readInput(){
-        try {
-            return reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+
+    public static String readString(){
+        return scanner.next();
     }
 }

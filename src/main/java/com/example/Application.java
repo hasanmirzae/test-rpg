@@ -1,6 +1,6 @@
 package com.example;
 
-import com.example.services.PageManager;
+import com.example.services.AppGui;
 import com.example.utils.Logger;
 
 import java.util.concurrent.ExecutorService;
@@ -16,13 +16,14 @@ public class Application {
         ExecutorService executorService = null;
         try{
             executorService = Executors.newSingleThreadExecutor();
-            executorService.submit(new PageManager())
+            executorService.submit(new AppGui())
                            .get();
         }catch (Throwable e){
             Logger.error("Sorry, Application exited unexpectedly :(");
-            executorService.shutdownNow();
             e.printStackTrace();
+            System.exit(1);
         }
+        executorService.shutdownNow();
     }
 
 
