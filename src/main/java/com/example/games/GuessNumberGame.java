@@ -105,7 +105,7 @@ public class GuessNumberGame implements Game{
         try {
             String input = IOUtil.readString();
             return Integer.valueOf(input);
-        }catch (Throwable e){
+        }catch (NumberFormatException e){
             System.out.println("Input is not a number!");
             return -1;
         }
