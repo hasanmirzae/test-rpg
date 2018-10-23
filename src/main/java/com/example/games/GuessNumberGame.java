@@ -38,7 +38,7 @@ public class GuessNumberGame implements Game{
         if (!IOUtil.writeObjectToFile(getFilename(),snapshot)){
             System.out.println("Something went wrong when saving your game :(");
         }else {
-            System.out.println("\nYour game saved successfully.");
+            System.out.println("\nYour game saved successfully for \""+username+"\"");
         }
     }
 
@@ -51,7 +51,7 @@ public class GuessNumberGame implements Game{
             GuessNumber snapshot = (GuessNumber) IOUtil.loadObjectFromFile(getFilename());
             tries = snapshot.getTries();
             guess = snapshot.getAnswer();
-            System.out.println("\nYour game loaded successfully for "+username);
+            System.out.println("\nYour game loaded successfully for \""+username+"\"");
             playGame();
         }catch (Throwable e){
             if (e.getCause() instanceof FileNotFoundException){
