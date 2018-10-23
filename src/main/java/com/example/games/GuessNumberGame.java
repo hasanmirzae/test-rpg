@@ -19,8 +19,10 @@ public class GuessNumberGame implements Game{
 
     public void startNewGame(){
         initGame();
-        username = IOUtil.prompt("Enter new username");
-        System.out.println("Welcome "+username+" to \"Guess Number Game\"");
+        username = IOUtil.prompt("What is your name?");
+        System.out.println("\nWelcome "+username+" to \"Guess Number Game\"");
+        System.out.println("\nYou need to guess the magical number to win.\n"
+                + "You have "+maxTries+" tries to find that number, otherwise you will die!\n");
         playGame();
     }
 
@@ -35,6 +37,8 @@ public class GuessNumberGame implements Game{
         GuessNumber snapshot = new GuessNumber(tries,guess);
         if (!IOUtil.writeObjectToFile(getFilename(),snapshot)){
             System.out.println("Something went wrong when saving your game :(");
+        }else {
+            System.out.println("\nYour game saved successfully.");
         }
     }
 
@@ -47,13 +51,13 @@ public class GuessNumberGame implements Game{
             GuessNumber snapshot = (GuessNumber) IOUtil.loadObjectFromFile(getFilename());
             tries = snapshot.getTries();
             guess = snapshot.getAnswer();
-            System.out.println("Game loaded successfully for "+username);
+            System.out.println("\nYour game loaded successfully for "+username);
             playGame();
         }catch (Throwable e){
             if (e.getCause() instanceof FileNotFoundException){
-                System.out.println("No game found for "+username);
+                System.out.println("\nNo game found for "+username);
             }else {
-                System.out.println("Failed to load the game for "+username);
+                System.out.println("\nFailed to load the game for "+username);
             }
         }
     }
@@ -62,13 +66,13 @@ public class GuessNumberGame implements Game{
 
     public void resume(){
         username = IOUtil.prompt("Enter username");
-        System.out.println("Welcome back "+username+" to GuessNumberGamePage");
+        System.out.println("\nWelcome back "+username+" to GuessNumberGamePage");
         load();
     }
 
     public void playGame(){
 
-        System.out.println("Let's guess a number now ...");
+        System.out.println("\nLet's guess a number now ...");
         while(tries <= maxTries){
             System.out.print(String.format("[%d / %d] Enter a natural number from 1 to %d: ",tries,maxTries,maxTries));
             input = readGuess();
@@ -78,7 +82,7 @@ public class GuessNumberGame implements Game{
                 break;
             }else {
                 if(!wantsToContinue()){
-                    System.out.println("You gave up!");
+                    System.out.println("\nYou gave up! :(");
                     break;
                 }
             }
@@ -89,7 +93,7 @@ public class GuessNumberGame implements Game{
     }
 
     private void gameOver() {
-        System.out.println("Game over! You lost!");
+        System.out.println("\nGame over! You lost! :(");
     }
 
     private boolean wantsToContinue() {
@@ -98,7 +102,7 @@ public class GuessNumberGame implements Game{
     }
 
     private void youWin() {
-        System.out.println("Congratulation! You won!!!");
+        System.out.println("\nCongratulation! You won!!!");
     }
 
     private int readGuess() {
@@ -106,7 +110,7 @@ public class GuessNumberGame implements Game{
             String input = IOUtil.readString();
             return Integer.valueOf(input);
         }catch (NumberFormatException e){
-            System.out.println("Input is not a number!");
+            System.out.println("\nInput is not a number!");
             return -1;
         }
     }
